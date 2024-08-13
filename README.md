@@ -1,2 +1,2 @@
 # The-Wieners-game
-version control
+Can some one right a description of the game here, thanks.
