@@ -994,7 +994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2016687922}
-  speed: 6
+  speed: 3
   turnSmoothTime: 0.1
 --- !u!114 &2016687921
 MonoBehaviour:
