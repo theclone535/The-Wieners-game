@@ -6,6 +6,7 @@ public class ThirdPersonMovement : MonoBehaviour
 {
 
     public CharacterController controller;
+    public bool isMoving;
 
     public float speed = 6f;
 
@@ -25,6 +26,12 @@ public class ThirdPersonMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             controller.Move(direction * speed * Time.deltaTime);
+            isMoving = true;
         }
+        else
+        {
+            isMoving = false;
+        }
+        
     }
 }

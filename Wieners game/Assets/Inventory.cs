@@ -7,20 +7,26 @@ public class Inventory : MonoBehaviour
     [SerializeField] private bool carrot;
     [SerializeField] private bool meat;
     [SerializeField] private bool water;
-    [SerializeField] private bool brewing;
+    private bool brewing;
     [SerializeField] private bool potion1;
     [SerializeField] private float money;
+    private bool isHolding;
 
     void Update()
         {
-            if (brewing)
+            if (brewing) //triggers when the play interats with the cauldron
             {
                 Potions();
-            }
+
+                if (isHolding)
+                {
+                    isHolding = false;
+                }
+        }
 
             
         }
-
+    // detects collision with ingredient triggers, bench, cauldron, etc
     void OnTriggerEnter(Collider other)
     {
        if (other.gameObject.CompareTag("Cauldron"))
@@ -28,24 +34,29 @@ public class Inventory : MonoBehaviour
             brewing = true;
        }
 
-       if (other.gameObject.CompareTag("Carrot"))
+       if (other.gameObject.CompareTag("Carrot") && !isHolding)
        {
             carrot = true;
+            isHolding = true;
        }
 
-       if (other.gameObject.CompareTag("Meat"))
+       if (other.gameObject.CompareTag("Meat") && !isHolding)
        {
             meat = true;
-       }
+            isHolding = true;
+        }
 
-       if (other.gameObject.CompareTag("Water"))
+       if (other.gameObject.CompareTag("Water") && !isHolding)
        {
             water = true;
-       }
+            isHolding = true;
+        }
 
        if (other.gameObject.CompareTag("Bench"))
        {
             Selling();
+
+
        }
 
       
@@ -62,7 +73,7 @@ public class Inventory : MonoBehaviour
        }
 
     }
-
+    //ingredients required for each potion
     void Potions()
     {
         if (carrot && meat && water)
@@ -73,7 +84,7 @@ public class Inventory : MonoBehaviour
             water = false;
         }
     }
-
+    //selling mechanics for potions
     void Selling()
         {
             if (potion1)
@@ -81,6 +92,8 @@ public class Inventory : MonoBehaviour
                 potion1 = false;
                 money += 100;
             }
+
+            
         }
 
 }
