@@ -9,6 +9,9 @@ TagManager:
   - Meat
   - Water
   - Bench
+  - FruitBowl
+  - MagmaShell
+  - Crystals
   layers:
   - Default
   - TransparentFX

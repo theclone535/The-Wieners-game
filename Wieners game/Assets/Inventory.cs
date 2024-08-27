@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] public bool carrot;
-    [SerializeField] public bool meat;
-    [SerializeField] public bool water;
+    [SerializeField] public bool fruitBowl;
+    [SerializeField] public bool magmaShell;
+    [SerializeField] public bool crystals;
     private bool brewing;
     [SerializeField] public bool potion1;
     [SerializeField] public float money;
@@ -41,23 +41,26 @@ public class Inventory : MonoBehaviour
        if (other.gameObject.CompareTag("Cauldron") && interact)
        {
             brewing = true;
+            //audio
+
+
        }
 
-       if (other.gameObject.CompareTag("Carrot") && !isHolding && interact)
+       if (other.gameObject.CompareTag("FruitBowl") && !isHolding && interact)
        {
-            carrot = true;
+            fruitBowl = true;
             isHolding = true;
        }
 
-       if (other.gameObject.CompareTag("Meat") && !isHolding && interact)
+       if (other.gameObject.CompareTag("MagmaShell") && !isHolding && interact)
        {
-            meat = true;
+            magmaShell = true;
             isHolding = true;
         }
 
-       if (other.gameObject.CompareTag("Water") && !isHolding && interact)
+       if (other.gameObject.CompareTag("Crystals") && !isHolding && interact)
        {
-            water = true;
+            crystals = true;
             isHolding = true;
         }
 
@@ -85,12 +88,12 @@ public class Inventory : MonoBehaviour
     //ingredients required for each potion
     void Potions()
     {
-        if (carrot && meat && water)
+        if (fruitBowl && magmaShell && crystals)
         {
             potion1 = true;
-            carrot = false;
-            meat = false;
-            water = false;
+            fruitBowl = false;
+            magmaShell = false;
+            crystals = false;
         }
     }
     //selling mechanics for potions

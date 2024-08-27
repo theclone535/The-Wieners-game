@@ -22,7 +22,7 @@ public class UIScript : MonoBehaviour
 
     void Update()
     {
-        if(inventory.carrot)
+        if(inventory.fruitBowl)
         {
             carrotToggle.isOn = true;
         }else
@@ -30,7 +30,7 @@ public class UIScript : MonoBehaviour
             carrotToggle.isOn = false;
         }
 
-        if(inventory.meat)
+        if(inventory.magmaShell)
         {
             meatToggle.isOn = true;
         }else
@@ -38,7 +38,7 @@ public class UIScript : MonoBehaviour
             meatToggle.isOn = false;
         }
 
-        if(inventory.water)
+        if(inventory.crystals)
         {
             waterToggle.isOn = true;
         }else
