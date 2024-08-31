@@ -1,2 +1,2 @@
-# The-Wieners-game
-Can some one right a description of the game here, thanks.
+# Potion Brew
+Game about brewing potions and exploiting their effects in order to get orders done efficiently
