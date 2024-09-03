@@ -8,11 +8,17 @@ public class UIScript : MonoBehaviour
 {
     private Inventory inventory;
     [SerializeField] GameObject player;
-    [SerializeField] Toggle carrotToggle;
-    [SerializeField] Toggle meatToggle;
-    [SerializeField] Toggle waterToggle;
-    [SerializeField] Toggle handToggle;
-    [SerializeField] Toggle potionToggle;
+    [SerializeField] Toggle crystalsToggle;
+    [SerializeField] Toggle magmaShellToggle;
+    [SerializeField] Toggle fruitBowlToggle;
+    [SerializeField] Toggle honeyToggle;
+    [SerializeField] Toggle lifeSapToggle;
+    [SerializeField] Toggle feyBloodToggle;
+
+    [SerializeField] Toggle regenerationToggle;
+    [SerializeField] Toggle fireResistanceToggle;
+    [SerializeField] Toggle iceResistanceToggle;
+    [SerializeField] Toggle magicResistanceToggle;
     [SerializeField] TMP_Text money;
 
     void Start()
@@ -24,42 +30,89 @@ public class UIScript : MonoBehaviour
     {
         if(inventory.fruitBowl)
         {
-            carrotToggle.isOn = true;
+            fruitBowlToggle.isOn = true;
         }else
         {
-            carrotToggle.isOn = false;
+            fruitBowlToggle.isOn = false;
         }
 
         if(inventory.magmaShell)
         {
-            meatToggle.isOn = true;
+            magmaShellToggle.isOn = true;
         }else
         {
-            meatToggle.isOn = false;
+            magmaShellToggle.isOn = false;
         }
 
         if(inventory.crystals)
         {
-            waterToggle.isOn = true;
+            crystalsToggle.isOn = true;
         }else
         {
-            waterToggle.isOn = false;
+            crystalsToggle.isOn = false;
         }
 
-        if(inventory.isHolding)
+        if (inventory.honey)
         {
-            handToggle.isOn = true;
-        }else
+            honeyToggle.isOn = true;
+        }
+        else
         {
-            handToggle.isOn = false;
+            honeyToggle.isOn = false;
         }
 
-        if(inventory.potion1)
+        if (inventory.lifeSap)
         {
-            potionToggle.isOn = true;
+            lifeSapToggle.isOn = true;
+        }
+        else
+        {
+            lifeSapToggle.isOn = false;
+        }
+
+        if (inventory.feyBlood)
+        {
+            feyBloodToggle.isOn = true;
+        }
+        else
+        {
+            feyBloodToggle.isOn = false;
+        }
+
+        //potions 
+        if (inventory.regenerationPotion)
+        {
+            regenerationToggle.isOn = true;
         }else
         {
-            potionToggle.isOn = false;
+            regenerationToggle.isOn = false;
+        }
+
+        if (inventory.fireResistancePotion)
+        {
+            fireResistanceToggle.isOn = true;
+        }
+        else
+        {
+            fireResistanceToggle.isOn = false;
+        }
+
+        if (inventory.IceResistancePotion)
+        {
+            iceResistanceToggle.isOn = true;
+        }
+        else
+        {
+            iceResistanceToggle.isOn = false;
+        }
+
+        if (inventory.magicResistancePotion)
+        {
+            magicResistanceToggle.isOn = true;
+        }
+        else
+        {
+            magicResistanceToggle.isOn = false;
         }
 
         money.text = "$" + inventory.money;

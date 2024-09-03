@@ -7,8 +7,16 @@ public class Inventory : MonoBehaviour
     [SerializeField] public bool fruitBowl;
     [SerializeField] public bool magmaShell;
     [SerializeField] public bool crystals;
+    [SerializeField] public bool feyBlood;
+    [SerializeField] public bool honey;
+    [SerializeField] public bool lifeSap;
+
     private bool brewing;
-    [SerializeField] public bool potion1;
+    [SerializeField] public bool regenerationPotion;
+    [SerializeField] public bool fireResistancePotion;
+    [SerializeField] public bool IceResistancePotion;
+    [SerializeField] public bool magicResistancePotion;
+    
     [SerializeField] public float money;
     public bool isHolding;
     [SerializeField] private bool interact = false;
@@ -31,9 +39,7 @@ public class Inventory : MonoBehaviour
             }else
             {
                 interact = false;
-            }
-
-            
+            } 
         }
     // detects collision with ingredient triggers, bench, cauldron, etc
     void OnTriggerStay(Collider other)
@@ -42,8 +48,6 @@ public class Inventory : MonoBehaviour
        {
             brewing = true;
             //audio
-
-
        }
 
        if (other.gameObject.CompareTag("FruitBowl") && !isHolding && interact)
@@ -67,12 +71,26 @@ public class Inventory : MonoBehaviour
        if (other.gameObject.CompareTag("Bench") && interact)
        {
             Selling();
-
-
        }
 
-      
-       
+        if (other.gameObject.CompareTag("FeyBlood") && !isHolding && interact)
+        {
+            feyBlood = true;
+            isHolding = true;
+        }
+
+        if (other.gameObject.CompareTag("Honey") && !isHolding && interact)
+        {
+            honey = true;
+            isHolding = true;
+        }
+
+        if (other.gameObject.CompareTag("LifeSap") && !isHolding && interact)
+        {
+            lifeSap = true;
+            isHolding = true;
+        }
+
     }
 
     void OnTriggerExit(Collider other)
@@ -88,25 +106,67 @@ public class Inventory : MonoBehaviour
     //ingredients required for each potion
     void Potions()
     {
-        if (fruitBowl && magmaShell && crystals)
+        if (honey && feyBlood && crystals)
         {
-            potion1 = true;
-            fruitBowl = false;
-            magmaShell = false;
+            regenerationPotion = true;
+            feyBlood = false;
+            honey = false;
             crystals = false;
         }
+
+        if (crystals && magmaShell && lifeSap)
+        {
+            fireResistancePotion = true;
+            crystals = false;
+            magmaShell = false;
+            lifeSap = false;
+        }
+
+        if (crystals && fruitBowl && lifeSap)
+        {
+            IceResistancePotion = true;
+            crystals = false;
+            fruitBowl = false;
+            lifeSap = false;
+        }
+
+        if (magmaShell && lifeSap && fruitBowl)
+        {
+            magicResistancePotion = true;
+            magmaShell = false;
+            lifeSap = false;
+            fruitBowl = false;
+        }
+
     }
     //selling mechanics for potions
     void Selling()
-        {
-            if (potion1)
+    {
+            if (regenerationPotion)
             {
-                potion1 = false;
-                money += 100;
+                regenerationPotion = false;
+                money += 3.5f;
             }
 
+            if (fireResistancePotion)
+            {
+                fireResistancePotion = false;
+                money += 12.8f;
+            }
+
+            if (IceResistancePotion)
+            {
+                IceResistancePotion = false;
+                money += 12f;
+            }
+
+            if (magicResistancePotion)
+            {
+                magicResistancePotion = false;
+                money += 30f;
+            }
             
-        }
+    }
 
 }
 

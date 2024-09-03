@@ -6,6 +6,7 @@ public class ThirdPersonMovement : MonoBehaviour
 {
 
     public CharacterController controller;
+    [SerializeField] GameObject camera;
     public bool isMoving;
 
     public float speed = 6f;
@@ -23,7 +24,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Start()
     {
-        startRotation = 90f;
+        startRotation = camera.transform.rotation.y;
     }
 
 
@@ -48,7 +49,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle - startRotation * 2f, ref turnSmoothVelocity, turnSmoothTime);
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle + startRotation + 90f, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle + startRotation, 0f) * Vector3.forward;

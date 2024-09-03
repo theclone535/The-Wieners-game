@@ -5,13 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cauldron
-  - Carrot
-  - Meat
-  - Water
   - Bench
   - FruitBowl
   - MagmaShell
   - Crystals
+  - FeyBlood
+  - Honey
+  - LifeSap
   layers:
   - Default
   - TransparentFX

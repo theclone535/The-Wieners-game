@@ -3,7 +3,22 @@ guid: 6a86330601a735f4cb3f5dfe3cad1d2e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pink
+    second: {fileID: 2100000, guid: 4eadef3041a7c954f9db0d924b68d156, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong2
+    second: {fileID: 2100000, guid: f088e706d0b567949afb7b674a8a63c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong3
+    second: {fileID: 2100000, guid: 73dd7a59d1367e445b59b9ced98a8e55, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
