@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] public bool fruitBowl;
-    [SerializeField] public bool magmaShell;
-    [SerializeField] public bool crystals;
-    [SerializeField] public bool feyBlood;
-    [SerializeField] public bool honey;
-    [SerializeField] public bool lifeSap;
-
-    private bool brewing;
+    [SerializeField] private bool brewing;
     [SerializeField] public bool regenerationPotion;
     [SerializeField] public bool fireResistancePotion;
     [SerializeField] public bool IceResistancePotion;
@@ -20,12 +13,151 @@ public class Inventory : MonoBehaviour
     [SerializeField] public float money;
     public bool isHolding;
     [SerializeField] private bool interact = false;
+    [SerializeField] private GameObject orderHandler;
+    [SerializeField] private OrderLogic orderLogic;
+    [SerializeField] private int potionRecipe;
+    public bool noOrder;
+
+    [SerializeField] private AudioSource moneyAudio;
+    [SerializeField] private AudioSource cauldronAudio;
+
+    public struct IngredientList
+    {
+    public bool fruitBowl;
+    public bool magmaShell;
+    public bool crystals;
+    public bool feyBlood;
+    public bool honey;
+    public bool lifeSap; 
+    }
+    public IngredientList c; // for cauldron
+    public IngredientList p; // for player
+    bool interacted;
+    void Start()
+    {
+        orderLogic = orderHandler.GetComponent<OrderLogic>();
+        
+    }
+
 
     void Update()
         {
+            // this hold the logic for which order is happening and detecting and converting ingredients
+            #region potionType
+            potionRecipe = orderLogic.potionRecipe;
             if (brewing) //triggers when the play interats with the cauldron
             {
-                Potions();
+                brewing = false;
+                if (potionRecipe == 1)
+                {
+                    if (p.honey || p.feyBlood || p.crystals)
+                    {
+                        if (p.honey)
+                        {
+                            p.honey = false;
+                            c.honey = true;
+                        }else if (p.feyBlood)
+                        {
+                            p.feyBlood = false;
+                            c.feyBlood = true;
+                        }else if (p.crystals)
+                        {
+                            p.crystals = false;
+                            c.crystals = true;
+                        }
+                        Potions();
+                        cauldronAudio.Play();
+                    }else
+                    {
+                        p.fruitBowl = false;
+                        p.magmaShell = false;
+                        p.lifeSap = false;
+                        Debug.Log("Wrong ingredient");
+                        // incorrect ingredient audio goes here
+                    }
+                }else if (potionRecipe == 2)
+                {
+                    if (p.crystals || p.magmaShell || p.lifeSap)
+                    {
+                        if (p.crystals)
+                        {
+                            p.crystals = false;
+                            c.crystals = true;
+                        }else if (p.magmaShell)
+                        {
+                            p.magmaShell = false;
+                            c.magmaShell = true;
+                        }else if (p.lifeSap)
+                        {
+                            p.lifeSap = false;
+                            c.lifeSap = true;
+                        }
+                         Potions();
+                         cauldronAudio.Play();
+                    }else
+                    {
+                        p.fruitBowl = false;
+                        p.feyBlood = false;
+                        p.honey = false;
+                        Debug.Log("Wrong ingredient");
+                    }
+                }else if (potionRecipe == 3)
+                {
+                    if (p.crystals || p.fruitBowl || p.lifeSap)
+                    {
+                        if (p.crystals)
+                        {
+                            p.crystals = false;
+                            c.crystals = true;
+                        }else if (p.fruitBowl)
+                        {
+                            p.fruitBowl = false;
+                            c.fruitBowl = true;
+                        }else if (p.lifeSap)
+                        {
+                            p.lifeSap = false;
+                            c.lifeSap = true;
+                        }
+                        Potions();
+                        cauldronAudio.Play();
+                    }else
+                    {
+                        p.feyBlood = false;
+                        p.magmaShell = false;
+                        p.honey = false;
+                        Debug.Log("Wrong ingredient");
+                    }
+                }else if (potionRecipe == 4)
+                {
+                    if (p.magmaShell || p.fruitBowl || p.lifeSap)
+                    {
+                        if (p.magmaShell)
+                        {
+                            p.magmaShell = false;
+                            c.magmaShell = true;
+                        }else if (p.fruitBowl)
+                        {
+                            p.fruitBowl = false;
+                            c.fruitBowl = true;
+                        }else if (p.lifeSap)
+                        {
+                            p.lifeSap = false;
+                            c.lifeSap = true;
+                        }
+                        Potions();
+                        cauldronAudio.Play();
+                    }else
+                    {
+                        p.crystals = false;
+                        p.feyBlood = false;
+                        p.honey = false;
+                        Debug.Log("Wrong ingredient");
+                    }
+                }else
+                {
+                    Debug.Log("How did you get here?");
+                }
+                #endregion
 
                 if (isHolding)
                 {
@@ -39,32 +171,36 @@ public class Inventory : MonoBehaviour
             }else
             {
                 interact = false;
+                interacted = false;
             } 
+        
         }
     // detects collision with ingredient triggers, bench, cauldron, etc
     void OnTriggerStay(Collider other)
     {
-       if (other.gameObject.CompareTag("Cauldron") && interact)
+        
+       if (other.gameObject.CompareTag("Cauldron") && interact && !interacted)
        {
             brewing = true;
-            //audio
+            interacted = true;
+            
        }
 
        if (other.gameObject.CompareTag("FruitBowl") && !isHolding && interact)
        {
-            fruitBowl = true;
+            p.fruitBowl = true;
             isHolding = true;
        }
 
        if (other.gameObject.CompareTag("MagmaShell") && !isHolding && interact)
        {
-            magmaShell = true;
+            p.magmaShell = true;
             isHolding = true;
         }
 
        if (other.gameObject.CompareTag("Crystals") && !isHolding && interact)
        {
-            crystals = true;
+            p.crystals = true;
             isHolding = true;
         }
 
@@ -75,19 +211,19 @@ public class Inventory : MonoBehaviour
 
         if (other.gameObject.CompareTag("FeyBlood") && !isHolding && interact)
         {
-            feyBlood = true;
+            p.feyBlood = true;
             isHolding = true;
         }
 
         if (other.gameObject.CompareTag("Honey") && !isHolding && interact)
         {
-            honey = true;
+            p.honey = true;
             isHolding = true;
         }
 
         if (other.gameObject.CompareTag("LifeSap") && !isHolding && interact)
         {
-            lifeSap = true;
+            p.lifeSap = true;
             isHolding = true;
         }
 
@@ -106,36 +242,37 @@ public class Inventory : MonoBehaviour
     //ingredients required for each potion
     void Potions()
     {
-        if (honey && feyBlood && crystals)
+        
+        if (c.honey && c.feyBlood && c.crystals)
         {
             regenerationPotion = true;
-            feyBlood = false;
-            honey = false;
-            crystals = false;
+            c.feyBlood = false;
+            c.honey = false;
+            c.crystals = false;
         }
 
-        if (crystals && magmaShell && lifeSap)
+        if (c.crystals && c.magmaShell && c.lifeSap)
         {
             fireResistancePotion = true;
-            crystals = false;
-            magmaShell = false;
-            lifeSap = false;
+            c.crystals = false;
+            c.magmaShell = false;
+           c.lifeSap = false;
         }
 
-        if (crystals && fruitBowl && lifeSap)
+        if (c.crystals && c.fruitBowl && c.lifeSap)
         {
             IceResistancePotion = true;
-            crystals = false;
-            fruitBowl = false;
-            lifeSap = false;
+            c.crystals = false;
+            c.fruitBowl = false;
+            c.lifeSap = false;
         }
 
-        if (magmaShell && lifeSap && fruitBowl)
+        if (c.magmaShell && c.lifeSap && c.fruitBowl)
         {
             magicResistancePotion = true;
-            magmaShell = false;
-            lifeSap = false;
-            fruitBowl = false;
+            c.magmaShell = false;
+            c.lifeSap = false;
+            c.fruitBowl = false;
         }
 
     }
@@ -146,24 +283,44 @@ public class Inventory : MonoBehaviour
             {
                 regenerationPotion = false;
                 money += 3.5f;
+
+                Destroy(orderLogic.clone);
+                noOrder = true;
+
+                moneyAudio.Play();
             }
 
             if (fireResistancePotion)
             {
                 fireResistancePotion = false;
                 money += 12.8f;
+
+                Destroy(orderLogic.clone);
+                noOrder = true;
+
+                moneyAudio.Play();
             }
 
             if (IceResistancePotion)
             {
                 IceResistancePotion = false;
                 money += 12f;
+
+                Destroy(orderLogic.clone);
+                noOrder = true;
+
+                moneyAudio.Play();
             }
 
             if (magicResistancePotion)
             {
                 magicResistancePotion = false;
                 money += 30f;
+
+                Destroy(orderLogic.clone);
+                noOrder = true;
+
+                moneyAudio.Play();
             }
             
     }

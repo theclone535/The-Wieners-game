@@ -6,7 +6,7 @@ public class ThirdPersonMovement : MonoBehaviour
 {
 
     public CharacterController controller;
-    [SerializeField] GameObject camera;
+    [SerializeField] GameObject mainCamera;
     public bool isMoving;
 
     public float speed = 6f;
@@ -24,7 +24,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Start()
     {
-        startRotation = camera.transform.rotation.y;
+        startRotation = mainCamera.GetComponent<Camera>().transform.rotation.y;
     }
 
 

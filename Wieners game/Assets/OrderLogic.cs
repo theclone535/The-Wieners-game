@@ -16,18 +16,31 @@ public class OrderLogic : MonoBehaviour
     [SerializeField] Sprite[] magicResistanceIcons;
     [SerializeField] Sprite[] potionIcons;
 
+    [SerializeField] private GameObject player;
+    [SerializeField] private Inventory inventory;
+
+    public int potionRecipe;
+    public GameObject clone;
+
     void Start()
     {
         newOrder = true;
+        inventory = player.GetComponent<Inventory>();
+        
     }
 
     void Update()
     {
-        
+        if (inventory.noOrder == true)
+        {
+            newOrder = true;
+            Debug.Log("New Order");
+            inventory.noOrder = false;
+        }
+
         if (newOrder)
         {
             newOrder = false;
-            GameObject clone;
             clone = Instantiate(orderPrefab, canvas.transform);
 
             GameObject panel;
@@ -36,18 +49,15 @@ public class OrderLogic : MonoBehaviour
             Image ingredient3;
             Image potion;
 
-            panel = clone.transform.Find("Panel").gameObject;
+           panel = clone.transform.Find("Panel").gameObject;
            ingredient1 = panel.transform.Find("ingredient 1").GetComponent<Image>();
            ingredient2 = panel.transform.Find("ingredient 2").GetComponent<Image>();
            ingredient3 = panel.transform.Find("ingredient 3").GetComponent<Image>();
            potion = panel.transform.Find("Potion").GetComponent<Image>();
 
+            //potionRecipe = Random.Range(1, 4);
+            potionRecipe = 1;
             
-
-            int potionRecipe;
-            potionRecipe = Random.Range(1, 4);
-            
-
             if (potionRecipe == 1)
             {
                //regeneration recipe
@@ -80,6 +90,10 @@ public class OrderLogic : MonoBehaviour
                 ingredient3.sprite = magicResistanceIcons[2];
                 potion.sprite = potionIcons[3];
             }
+
+
+        
+
         }
     }
 }

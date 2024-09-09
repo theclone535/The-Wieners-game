@@ -28,7 +28,7 @@ public class UIScript : MonoBehaviour
 
     void Update()
     {
-        if(inventory.fruitBowl)
+        if(inventory.p.fruitBowl || inventory.c.fruitBowl)
         {
             fruitBowlToggle.isOn = true;
         }else
@@ -36,7 +36,7 @@ public class UIScript : MonoBehaviour
             fruitBowlToggle.isOn = false;
         }
 
-        if(inventory.magmaShell)
+        if(inventory.p.magmaShell || inventory.c.magmaShell)
         {
             magmaShellToggle.isOn = true;
         }else
@@ -44,7 +44,7 @@ public class UIScript : MonoBehaviour
             magmaShellToggle.isOn = false;
         }
 
-        if(inventory.crystals)
+        if(inventory.p.crystals || inventory.c.crystals)
         {
             crystalsToggle.isOn = true;
         }else
@@ -52,7 +52,7 @@ public class UIScript : MonoBehaviour
             crystalsToggle.isOn = false;
         }
 
-        if (inventory.honey)
+        if (inventory.p.honey || inventory.c.honey)
         {
             honeyToggle.isOn = true;
         }
@@ -61,7 +61,7 @@ public class UIScript : MonoBehaviour
             honeyToggle.isOn = false;
         }
 
-        if (inventory.lifeSap)
+        if (inventory.p.lifeSap || inventory.c.lifeSap)
         {
             lifeSapToggle.isOn = true;
         }
@@ -70,7 +70,7 @@ public class UIScript : MonoBehaviour
             lifeSapToggle.isOn = false;
         }
 
-        if (inventory.feyBlood)
+        if (inventory.p.feyBlood || inventory.c.feyBlood)
         {
             feyBloodToggle.isOn = true;
         }

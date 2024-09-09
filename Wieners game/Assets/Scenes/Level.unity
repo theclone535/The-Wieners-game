@@ -277,6 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 497551886}
+  mainCamera: {fileID: 0}
   isMoving: 0
   speed: 3
   groundCheck: {fileID: 804496793}
@@ -297,13 +298,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea6a16bcf21d0440bba62f859bb23c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitBowl: 0
-  magmaShell: 0
-  crystals: 0
-  potion1: 0
+  brewing: 0
+  regenerationPotion: 0
+  fireResistancePotion: 0
+  IceResistancePotion: 0
+  magicResistancePotion: 0
   money: 0
   isHolding: 0
   interact: 0
+  orderHandler: {fileID: 0}
+  orderLogic: {fileID: 0}
+  potionRecipe: 0
+  noOrder: 0
 --- !u!143 &497551886
 CharacterController:
   m_ObjectHideFlags: 0
