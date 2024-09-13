@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CauldronIcons : MonoBehaviour
 {
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject mainCamera;
     [SerializeField] private Inventory inventory;
     [SerializeField] private GameObject panel;
     [SerializeField] private GameObject imagePrefab;
@@ -15,7 +16,7 @@ public class CauldronIcons : MonoBehaviour
     bool panelised = false;
     public int numOfImg = 0;
     bool[] done = {false, false, false, false, false, false}; 
-
+    
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class CauldronIcons : MonoBehaviour
 
     void Update()
     {
-        
+    
 
         if (inventory.c.fruitBowl || inventory.c.magmaShell || inventory.c.crystals || inventory.c.feyBlood || inventory.c.honey || inventory.c.lifeSap)
         {
@@ -35,6 +36,14 @@ public class CauldronIcons : MonoBehaviour
                 Instantiate(panel, worldCanvas); 
                 panelised = true;
             }
+
+            if (panelised)
+        {
+            GameObject clone = GameObject.Find("InCauldron(Clone)");
+            clone.transform.LookAt(mainCamera.transform);
+            clone.GetComponent<RectTransform>().eulerAngles = clone.transform.rotation.eulerAngles + new Vector3(mainCamera.transform.rotation.eulerAngles.x, 180, 0);
+            
+        }
 
             if (inventory.c.fruitBowl) //fruitbowl = image[0]
             {   
@@ -49,7 +58,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(2,1);
-                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[1].transform.localPosition = new Vector3(0.5f, 0, 0);
                     ingredient[1].sprite = image[0];
 
                     numOfImg++;
@@ -58,7 +68,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(3,1);
-                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position + new Vector3(1, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[2].transform.localPosition = new Vector3(1, 0, 0);
                     ingredient[2].sprite = image[0];
                     done[0] = true;
                 }
@@ -77,7 +88,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(2,1);
-                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[1].transform.localPosition = new Vector3(0.5f, 0, 0);
                     ingredient[1].sprite = image[1];
 
                     numOfImg++;
@@ -86,7 +98,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(3,1);
-                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position + new Vector3(1, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[2].transform.localPosition = new Vector3(1, 0, 0);
                     ingredient[2].sprite = image[1];
                     done[1] = true;
                 }
@@ -105,7 +118,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(2,1);
-                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[1].transform.localPosition = new Vector3(0.5f, 0, 0);
                     ingredient[1].sprite = image[2];
 
                     numOfImg++;
@@ -114,7 +128,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(3,1);
-                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position + new Vector3(1, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[2].transform.localPosition = new Vector3(1, 0, 0);
                     ingredient[2].sprite = image[2];
                     done[2] = true;
                 }
@@ -133,7 +148,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(2,1);
-                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[1].transform.localPosition = new Vector3(0.5f, 0, 0);
                     ingredient[1].sprite = image[3];
 
                     numOfImg++;
@@ -142,7 +158,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(3,1);
-                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position + new Vector3(1, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[2].transform.localPosition = new Vector3(1, 0, 0);
                     ingredient[2].sprite = image[3];
                     done[3] = true;
                 }
@@ -161,7 +178,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(2,1);
-                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[1].transform.localPosition = new Vector3(0.5f, 0, 0);
                     ingredient[1].sprite = image[4];
 
                     numOfImg++;
@@ -170,7 +188,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(3,1);
-                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position + new Vector3(1, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[2].transform.localPosition = new Vector3(1, 0, 0);
                     ingredient[2].sprite = image[4];
                     done[4] = true;
                 }
@@ -189,7 +208,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(2,1);
-                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[1] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[1].transform.localPosition = new Vector3(0.5f, 0, 0);
                     ingredient[1].sprite = image[5];
 
                     numOfImg++;
@@ -198,7 +218,8 @@ public class CauldronIcons : MonoBehaviour
                 {
                     GameObject clone = GameObject.Find("InCauldron(Clone)");
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(3,1);
-                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position + new Vector3(1, 0, 0), Quaternion.identity, clone.transform).GetComponent<Image>();
+                    ingredient[2] = Instantiate(imagePrefab,clone.transform.position, clone.transform.rotation, clone.transform).GetComponent<Image>();
+                    ingredient[2].transform.localPosition = new Vector3(1, 0, 0);
                     ingredient[2].sprite = image[5];
                     done[5] = true;
                 }
@@ -211,6 +232,9 @@ public class CauldronIcons : MonoBehaviour
             {
                 done[i] = false;
             }
+            numOfImg = 0;
         }
+
+        
     }
 }
