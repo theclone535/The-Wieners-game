@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject orderHandler;
     [SerializeField] private OrderLogic orderLogic;
     [SerializeField] private int potionRecipe;
+    [SerializeField] private GameObject[] ingredientPrefab;
     public bool noOrder;
 
     [SerializeField] private AudioSource moneyAudio;
@@ -33,8 +34,11 @@ public class Inventory : MonoBehaviour
     public IngredientList c; // for cauldron
     public IngredientList p; // for player
     bool interacted;
+    bool done = false;
+    GameObject clone;
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         orderLogic = orderHandler.GetComponent<OrderLogic>();
         
     }
@@ -45,9 +49,10 @@ public class Inventory : MonoBehaviour
             // this hold the logic for which order is happening and detecting and converting ingredients
             #region potionType
             potionRecipe = orderLogic.potionRecipe;
-            if (brewing) //triggers when the play interats with the cauldron
+            if (brewing) //triggers when the play interacts with the cauldron
             {
                 brewing = false;
+                done = false;
                 if (potionRecipe == 1)
                 {
                     if (p.honey || p.feyBlood || p.crystals)
@@ -165,6 +170,12 @@ public class Inventory : MonoBehaviour
                 }
                 
             }
+
+            if(!done && clone)
+            {
+                Destroy(clone);
+            }
+
             if (Input.GetKey("e"))
             {
                 interact = true;
@@ -173,6 +184,43 @@ public class Inventory : MonoBehaviour
                 interact = false;
                 interacted = false;
             } 
+            #region InstantiateIngredients
+            if(p.crystals && !done)
+            {
+                clone = Instantiate(ingredientPrefab[0], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
+                done = true;
+            }
+
+            if(p.magmaShell && !done)
+            {
+                clone = Instantiate(ingredientPrefab[1], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
+                done = true;
+            }
+
+            if(p.magmaShell && !done)
+            {
+                clone = Instantiate(ingredientPrefab[2], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
+                done = true;
+            }
+
+            if(p.magmaShell && !done)
+            {
+                clone = Instantiate(ingredientPrefab[3], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
+                done = true;
+            }
+
+            if(p.magmaShell && !done)
+            {
+                clone = Instantiate(ingredientPrefab[4], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
+                done = true;
+            }
+
+            if(p.magmaShell && !done)
+            {
+                clone = Instantiate(ingredientPrefab[5], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
+                done = true;
+            }
+            #endregion
         
         }
     // detects collision with ingredient triggers, bench, cauldron, etc
