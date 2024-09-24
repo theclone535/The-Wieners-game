@@ -12,12 +12,15 @@ public class Inventory : MonoBehaviour
     
     [SerializeField] public float money;
     public bool isHolding;
-    [SerializeField] private bool interact = false;
+    public bool interact = false;
     [SerializeField] private GameObject orderHandler;
     [SerializeField] private OrderLogic orderLogic;
+    [SerializeField] private GameObject customerHolder;
+    [SerializeField] private CustomerLogic customerLogic;
     [SerializeField] private int potionRecipe;
     [SerializeField] private GameObject[] ingredientPrefab;
-    public bool noOrder;
+    public bool noOrder = false;
+    public bool newCustomer;
 
     [SerializeField] private AudioSource moneyAudio;
     [SerializeField] private AudioSource cauldronAudio;
@@ -40,6 +43,7 @@ public class Inventory : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         orderLogic = orderHandler.GetComponent<OrderLogic>();
+        customerLogic = customerHolder.GetComponent<CustomerLogic>();
         
     }
 
@@ -108,16 +112,16 @@ public class Inventory : MonoBehaviour
                     }
                 }else if (potionRecipe == 3)
                 {
-                    if (p.crystals || p.fruitBowl || p.lifeSap)
+                    if (p.crystals || p.feyBlood || p.lifeSap)
                     {
                         if (p.crystals)
                         {
                             p.crystals = false;
                             c.crystals = true;
-                        }else if (p.fruitBowl)
+                        }else if (p.feyBlood)
                         {
-                            p.fruitBowl = false;
-                            c.fruitBowl = true;
+                            p.feyBlood = false;
+                            c.feyBlood = true;
                         }else if (p.lifeSap)
                         {
                             p.lifeSap = false;
@@ -134,16 +138,16 @@ public class Inventory : MonoBehaviour
                     }
                 }else if (potionRecipe == 4)
                 {
-                    if (p.magmaShell || p.fruitBowl || p.lifeSap)
+                    if (p.magmaShell || p.honey || p.lifeSap)
                     {
                         if (p.magmaShell)
                         {
                             p.magmaShell = false;
                             c.magmaShell = true;
-                        }else if (p.fruitBowl)
+                        }else if (p.honey)
                         {
-                            p.fruitBowl = false;
-                            c.fruitBowl = true;
+                            p.honey = false;
+                            c.honey = true;
                         }else if (p.lifeSap)
                         {
                             p.lifeSap = false;
@@ -184,6 +188,7 @@ public class Inventory : MonoBehaviour
                 interact = false;
                 interacted = false;
             } 
+            //instantiates ingredients that the which is holding
             #region InstantiateIngredients
             if(p.crystals && !done)
             {
@@ -257,6 +262,12 @@ public class Inventory : MonoBehaviour
             Selling();
        }
 
+        if (other.gameObject.CompareTag("Bench") && interact && !interacted && customerLogic.reached)
+        {
+            customerLogic.bench = true;
+            interacted = true;
+        }
+
         if (other.gameObject.CompareTag("FeyBlood") && !isHolding && interact)
         {
             p.feyBlood = true;
@@ -284,7 +295,13 @@ public class Inventory : MonoBehaviour
             {
                 brewing = false;
             }
-       }
+
+            if (other.gameObject.CompareTag("Bench"))
+            {
+                customerLogic.bench = false;
+                
+            }
+        }
 
     }
     //ingredients required for each potion
@@ -311,7 +328,7 @@ public class Inventory : MonoBehaviour
         {
             IceResistancePotion = true;
             c.crystals = false;
-            c.fruitBowl = false;
+            c.feyBlood = false;
             c.lifeSap = false;
         }
 
@@ -320,7 +337,7 @@ public class Inventory : MonoBehaviour
             magicResistancePotion = true;
             c.magmaShell = false;
             c.lifeSap = false;
-            c.fruitBowl = false;
+            c.honey = false;
         }
 
     }
@@ -334,6 +351,8 @@ public class Inventory : MonoBehaviour
 
                 Destroy(orderLogic.clone);
                 noOrder = true;
+                newCustomer = true;
+                orderLogic.potionRecipe = 0;
 
                 moneyAudio.Play();
             }
@@ -345,8 +364,10 @@ public class Inventory : MonoBehaviour
 
                 Destroy(orderLogic.clone);
                 noOrder = true;
+                newCustomer = true;
+                orderLogic.potionRecipe = 0;
 
-                moneyAudio.Play();
+            moneyAudio.Play();
             }
 
             if (IceResistancePotion)
@@ -356,8 +377,10 @@ public class Inventory : MonoBehaviour
 
                 Destroy(orderLogic.clone);
                 noOrder = true;
+                newCustomer = true;
+                orderLogic.potionRecipe = 0;
 
-                moneyAudio.Play();
+            moneyAudio.Play();
             }
 
             if (magicResistancePotion)
@@ -367,6 +390,8 @@ public class Inventory : MonoBehaviour
 
                 Destroy(orderLogic.clone);
                 noOrder = true;
+                newCustomer = true;
+                orderLogic.potionRecipe = 0;
 
                 moneyAudio.Play();
             }

@@ -2755,7 +2755,10 @@ MonoBehaviour:
   - {fileID: 3717853161955496123, guid: d34bf313a1462d349a4b7e4edc2f4552, type: 3}
   player: {fileID: 919132147807460585}
   inventory: {fileID: 2145167070}
+  orderHandler: {fileID: 1227059539}
+  orderlogic: {fileID: 1227059540}
   speed: 2
+  bench: 0
 --- !u!4 &773254957
 Transform:
   m_ObjectHideFlags: 0
@@ -4129,6 +4132,7 @@ MonoBehaviour:
   inventory: {fileID: 2145167070}
   potionRecipe: 0
   clone: {fileID: 0}
+  interacted: 0
 --- !u!4 &1227059541
 Transform:
   m_ObjectHideFlags: 0
@@ -5605,8 +5609,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0, y: 0, z: -1}
+  m_Size: {x: 1.0000002, y: 1, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1585486813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6a86330601a735f4cb3f5dfe3cad1d2e, type: 3}
@@ -7275,6 +7279,8 @@ MonoBehaviour:
   interact: 0
   orderHandler: {fileID: 1227059539}
   orderLogic: {fileID: 1227059540}
+  customerHolder: {fileID: 773254955}
+  customerLogic: {fileID: 773254956}
   potionRecipe: 0
   ingredientPrefab:
   - {fileID: 919132149155446097, guid: 6a86330601a735f4cb3f5dfe3cad1d2e, type: 3}
@@ -7284,6 +7290,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   noOrder: 0
+  newCustomer: 0
   moneyAudio: {fileID: 1289863318}
   cauldronAudio: {fileID: 1995377554}
 --- !u!114 &2145167071

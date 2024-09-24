@@ -28,11 +28,14 @@ public class OrderLogic : MonoBehaviour
     private Image ingredient3;
     private Image potion;
 
+    public bool interacted = false; //controlled by customerlogic
+    public bool atPoint1; //controlled by customerlogic
+
     void Start()
     {
         newOrder = true;
         inventory = player.GetComponent<Inventory>();
-        
+
     }
 
     void Update()
@@ -44,7 +47,9 @@ public class OrderLogic : MonoBehaviour
             inventory.noOrder = false;
         }
 
-        if (newOrder)
+        
+
+        if (newOrder && interacted && !clone)
         {
             newOrder = false;
             clone = Instantiate(orderPrefab, canvas.transform);
