@@ -59,10 +59,6 @@ public class CustomerLogic : MonoBehaviour
             reached = false;
         }
 
-        if (clone.transform.position == point1.transform.position)
-        {
-            orderlogic.atPoint1 = true;
-        }
 
         if (bench && reached && Input.GetKey("e"))
         {

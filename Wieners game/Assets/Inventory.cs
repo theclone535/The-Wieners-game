@@ -164,7 +164,13 @@ public class Inventory : MonoBehaviour
                     }
                 }else
                 {
-                    Debug.Log("How did you get here?");
+                p.crystals = false;
+                p.feyBlood = false;
+                p.honey = false;
+                p.magmaShell = false;
+                p.lifeSap = false;
+                p.fruitBowl = false;
+                Debug.Log("Wrong Ingredient");
                 }
                 #endregion
 
