@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
     public bool crystals;
     public bool feyBlood;
     public bool honey;
-    public bool lifeSap; 
+    public bool lifeSap; // ice heart
     }
     public IngredientList c; // for cauldron
     public IngredientList p; // for player

@@ -206,7 +206,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 38693e58f9b07f9409b2a6b673b5d8a8, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38693e58f9b07f9409b2a6b673b5d8a8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -308,8 +308,14 @@ MonoBehaviour:
   interact: 0
   orderHandler: {fileID: 0}
   orderLogic: {fileID: 0}
+  customerHolder: {fileID: 0}
+  customerLogic: {fileID: 0}
   potionRecipe: 0
+  ingredientPrefab: []
   noOrder: 0
+  newCustomer: 0
+  moneyAudio: {fileID: 0}
+  cauldronAudio: {fileID: 0}
 --- !u!143 &497551886
 CharacterController:
   m_ObjectHideFlags: 0
@@ -328,6 +334,63 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &671097285
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.156294
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.318309
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
+      propertyPath: m_Name
+      value: Shop_Vers07
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c144e9cee3d5ee419e4f0f499d2e073, type: 3}
 --- !u!1 &804496792
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +591,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536904217
 GameObject:
@@ -772,7 +835,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!33 &147583818097566017
 MeshFilter:
@@ -944,7 +1007,7 @@ Transform:
   - {fileID: 8040051262759558466}
   - {fileID: 7596762559864021159}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &592664079463051811
 Transform:
