@@ -11,7 +11,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public float speed = 6f;
     float gravity = -9.81f;
-    private float startRotation;
+    [SerializeField] private float startRotation;
 
     public Transform groundCheck;
     public float groundDistance = 1.1f;
@@ -24,13 +24,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Start()
     {
-        startRotation = mainCamera.GetComponent<Camera>().transform.rotation.y;
+        startRotation = 90f;
     }
 
 
     void Update()
     {
-
+        startRotation = mainCamera.transform.rotation.eulerAngles.y;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(isGrounded && velocity.y < 0)

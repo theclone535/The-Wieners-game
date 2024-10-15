@@ -208,25 +208,26 @@ public class Inventory : MonoBehaviour
                 done = true;
             }
 
-            if(p.magmaShell && !done)
+            if(p.feyBlood && !done)
             {
-                clone = Instantiate(ingredientPrefab[2], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
-                done = true;
+                clone = Instantiate(ingredientPrefab[2], transform.position + new Vector3(0f, 0f, 3f), Quaternion.Euler(0, 0, 0),transform); //(0.175f, -0.3f, -3)
+            
+            done = true;
             }
 
-            if(p.magmaShell && !done)
+            if(p.fruitBowl && !done)
             {
                 clone = Instantiate(ingredientPrefab[3], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
                 done = true;
             }
 
-            if(p.magmaShell && !done)
+            if(p.honey && !done)
             {
                 clone = Instantiate(ingredientPrefab[4], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
                 done = true;
             }
 
-            if(p.magmaShell && !done)
+            if(p.lifeSap && !done)
             {
                 clone = Instantiate(ingredientPrefab[5], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
                 done = true;

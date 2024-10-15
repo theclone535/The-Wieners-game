@@ -2800,7 +2800,7 @@ MonoBehaviour:
   point1: {fileID: 856650063}
   point2: {fileID: 116491915}
   customers:
-  - {fileID: 3717853161955496123, guid: d34bf313a1462d349a4b7e4edc2f4552, type: 3}
+  - {fileID: 116187471481020009, guid: f9887b2329190624996abc774fd76276, type: 3}
   player: {fileID: 919132147807460585}
   inventory: {fileID: 2145167070}
   orderHandler: {fileID: 1227059539}
@@ -6015,7 +6015,7 @@ CapsuleCollider:
   m_Radius: 1
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0, z: -0.00000008940697}
 --- !u!4 &1753571446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 67ac21af60a5c2a48a816487f3087d6a, type: 3}
@@ -7359,6 +7359,7 @@ MonoBehaviour:
   mainCamera: {fileID: 963194225}
   isMoving: 0
   speed: 3
+  startRotation: 0
   groundCheck: {fileID: 445081334}
   groundDistance: 1.1
   groundMask:
