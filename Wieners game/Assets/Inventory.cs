@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private CustomerLogic customerLogic;
     [SerializeField] private int potionRecipe;
     [SerializeField] private GameObject[] ingredientPrefab;
+    [SerializeField] private GameObject holdingPos;
     public bool noOrder = false;
     public bool newCustomer;
 
@@ -112,16 +113,16 @@ public class Inventory : MonoBehaviour
                     }
                 }else if (potionRecipe == 3)
                 {
-                    if (p.crystals || p.feyBlood || p.lifeSap)
+                    if (p.crystals || p.fruitBowl || p.lifeSap)
                     {
                         if (p.crystals)
                         {
                             p.crystals = false;
                             c.crystals = true;
-                        }else if (p.feyBlood)
+                        }else if (p.fruitBowl)
                         {
-                            p.feyBlood = false;
-                            c.feyBlood = true;
+                            p.fruitBowl = false;
+                            c.fruitBowl = true;
                         }else if (p.lifeSap)
                         {
                             p.lifeSap = false;
@@ -159,7 +160,7 @@ public class Inventory : MonoBehaviour
                     {
                         p.crystals = false;
                         p.feyBlood = false;
-                        p.honey = false;
+                        p.fruitBowl = false;
                         Debug.Log("Wrong ingredient");
                     }
                 }else
@@ -194,43 +195,47 @@ public class Inventory : MonoBehaviour
                 interact = false;
                 interacted = false;
             } 
-            //instantiates ingredients that the which is holding
+            //instantiates ingredients that the witch is holding
             #region InstantiateIngredients
             if(p.crystals && !done)
             {
-                clone = Instantiate(ingredientPrefab[0], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
+                clone = Instantiate(ingredientPrefab[0], transform.position + new Vector3(-0.2f, 0.6f, 0), Quaternion.identity, transform);
+                clone.transform.rotation = transform.rotation; clone.transform.localPosition = new Vector3(-0.2f, 0.6f, 0);
                 done = true;
             }
 
             if(p.magmaShell && !done)
             {
-                clone = Instantiate(ingredientPrefab[1], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
-                done = true;
+                clone = Instantiate(ingredientPrefab[1], transform.position + new Vector3(0.2f, 0.6f, 0), Quaternion.Euler(0, 0, 0), transform);
+                clone.transform.rotation = transform.rotation; clone.transform.localPosition = new Vector3(-0.2f, 0.6f, 0);
+            done = true;
             }
 
             if(p.feyBlood && !done)
             {
-                clone = Instantiate(ingredientPrefab[2], transform.position + new Vector3(0f, 0f, 3f), Quaternion.Euler(0, 0, 0),transform); //(0.175f, -0.3f, -3)
+                clone = Instantiate(ingredientPrefab[2], transform.position + new Vector3(0.2f, 0.6f, 0), Quaternion.Euler(0, 0, 0),transform); //(0.175f, -0.3f, -3)
             
             done = true;
             }
 
             if(p.fruitBowl && !done)
             {
-                clone = Instantiate(ingredientPrefab[3], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
-                done = true;
+                clone = Instantiate(ingredientPrefab[3], transform.position + new Vector3(0.2f, 0.6f, 0), Quaternion.identity,transform);
+                clone.transform.rotation = transform.rotation; clone.transform.localPosition = new Vector3(-0.45f, 0.6f, 0);
+            done = true;
             }
 
             if(p.honey && !done)
             {
-                clone = Instantiate(ingredientPrefab[4], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
+                clone = Instantiate(ingredientPrefab[4], transform.position + new Vector3(0.3f, 0.6f, 0), Quaternion.identity,transform); 
                 done = true;
             }
 
             if(p.lifeSap && !done)
             {
-                clone = Instantiate(ingredientPrefab[5], transform.position + new Vector3(0.175f, -0.175f, 0), Quaternion.identity,transform); 
-                done = true;
+                clone = Instantiate(ingredientPrefab[5], transform.position + new Vector3(0.2f, 0.6f, 0), Quaternion.identity,transform);
+                clone.transform.rotation = transform.rotation;clone.transform.Rotate(new Vector3(0, 0, -90), Space.Self) ; clone.transform.localPosition = new Vector3(-0.2f, 0.6f, 0);
+            done = true;
             }
             #endregion
         
@@ -335,11 +340,11 @@ public class Inventory : MonoBehaviour
         {
             IceResistancePotion = true;
             c.crystals = false;
-            c.feyBlood = false;
+            c.fruitBowl = false;
             c.lifeSap = false;
         }
 
-        if (c.magmaShell && c.lifeSap && c.fruitBowl)
+        if (c.magmaShell && c.lifeSap && c.honey)
         {
             magicResistancePotion = true;
             c.magmaShell = false;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Upgrades : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Upgrades : MonoBehaviour
     [SerializeField] private Button[] button;
 
     static private bool[] upgradesUnlocked = new bool[5]; // 0 - Additional Cauldron , 1 - Faster Brewing, 2 - Pockets, 3 - cat snacks, 4 - magic fridge
-
+    static public int currentDay;
 
 
     // Start is called before the first frame update
@@ -45,6 +46,7 @@ public class Upgrades : MonoBehaviour
     public void NextDay()
     {
         //interact with the timer script
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void AdditionalCauldron()

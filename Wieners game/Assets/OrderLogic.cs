@@ -62,8 +62,8 @@ public class OrderLogic : MonoBehaviour
            ingredient3 = panel.transform.Find("ingredient 3").GetComponent<Image>();
            potion = panel.transform.Find("Potion").GetComponent<Image>();
 
-            //potionRecipe = Random.Range(1, 4);
-            potionRecipe = 1;//remove this in build, just for testing
+            potionRecipe = Random.Range(1, 5);
+            //potionRecipe = 1;//remove this in build, just for testing
         }            
 
         if (potionRecipe == 1)
@@ -175,12 +175,12 @@ public class OrderLogic : MonoBehaviour
             else if (potionRecipe == 4)
             {
                 //magic resistance recipe
-                if(inventory.c.fruitBowl)
+                if(inventory.c.honey)
                 {
                     ingredient1.sprite = checkMark;
                 }else
                 {
-                    ingredient1.sprite = magicResistanceIcons[0];//fruitbowl
+                    ingredient1.sprite = magicResistanceIcons[0];//honey
                 }
                 if(inventory.c.magmaShell)
                 {
