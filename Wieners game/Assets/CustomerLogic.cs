@@ -42,14 +42,25 @@ public class CustomerLogic : MonoBehaviour
         {
             spawn = false;
 
-            clone = Instantiate(customers[0], point1.transform.position, Quaternion.identity);//Random.Range(0, 6)
+            clone = Instantiate(customers[Random.Range(0, 4)], point1.transform.position, Quaternion.identity);//Random.Range(0, 6)
         }
 
         if (clone)
         {
-            clone.transform.position = Vector3.MoveTowards(clone.transform.position, point2.transform.position, speed * Time.deltaTime);
+            if (clone == GameObject.Find("ranger(Clone)"))
+            {
+                clone.transform.position = Vector3.MoveTowards(clone.transform.position, point2.transform.position + new Vector3(0, 0.5f, 0), speed * Time.deltaTime);
+                
+            }
+            else
+            {
+                clone.transform.position = Vector3.MoveTowards(clone.transform.position, point2.transform.position, speed * Time.deltaTime);
+                
+            }
+            
         }
 
+        
         if (clone.transform.position == point2.transform.position)
         {
             reached = true;

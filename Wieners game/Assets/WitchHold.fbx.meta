@@ -1,39 +1,9 @@
 fileFormatVersion: 2
-guid: fc1d7d96dfaf76b41b2e26f83e7a145c
+guid: 6e06fd074a7119d439dd7bd459944912
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Belt1
-    second: {fileID: 2100000, guid: c1ef1a307ee444b4fb74759f1e094ff0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Black
-    second: {fileID: 2100000, guid: 5a248b1e8e37b8042ba93eaa192cbb3e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hair1
-    second: {fileID: 2100000, guid: 0d53db73f929ed345a7e0b7cef84c3a5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: 205104905b4d66c4e95f31c42946d69e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Skin
-    second: {fileID: 2100000, guid: 50b5aae36a4dae4419e68bc4e483807d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Skirt1
-    second: {fileID: 2100000, guid: f27abe3340dff7648a567cf3409f6252, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -118,7 +88,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 12.5
+    globalScale: 0.125
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

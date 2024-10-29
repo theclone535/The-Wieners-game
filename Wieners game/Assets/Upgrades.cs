@@ -25,10 +25,10 @@ public class Upgrades : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
 
-        
+        Cursor.lockState = CursorLockMode.None;
+
+
     }
 
     public void UpgradeButton()
