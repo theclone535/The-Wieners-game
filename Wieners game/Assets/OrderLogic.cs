@@ -56,10 +56,10 @@ public class OrderLogic : MonoBehaviour
 
             GameObject panel;
 
-           panel = clone.transform.Find("Panel").gameObject;
-           ingredient1 = panel.transform.Find("ingredient 1").GetComponent<Image>();
-           ingredient2 = panel.transform.Find("ingredient 2").GetComponent<Image>();
-           ingredient3 = panel.transform.Find("ingredient 3").GetComponent<Image>();
+           panel = clone.transform.Find("Panel").gameObject;//panel
+           //ingredient1 = panel.transform.Find("ingredient 1").GetComponent<Image>();
+           //ingredient2 = panel.transform.Find("ingredient 2").GetComponent<Image>();
+           //ingredient3 = panel.transform.Find("ingredient 3").GetComponent<Image>();
            potion = panel.transform.Find("Potion").GetComponent<Image>();
 
             potionRecipe = Random.Range(1, 5);
@@ -69,7 +69,7 @@ public class OrderLogic : MonoBehaviour
         if (potionRecipe == 1)
             {
                //regeneration recipe
-                if(inventory.c.crystals)
+                /*if(inventory.c.crystals)
                 {
                     ingredient1.sprite = checkMark;
                 }else
@@ -89,7 +89,7 @@ public class OrderLogic : MonoBehaviour
                 }else
                 {
                     ingredient3.sprite = regenerationIcons[2];//honey
-                }
+                }*/
                 if (inventory.regenerationPotion)
                 {
                     ingredient1.sprite = checkMark;
@@ -104,7 +104,7 @@ public class OrderLogic : MonoBehaviour
             else if (potionRecipe == 2)
             {
                 //fire resistance recipe
-                if(inventory.c.crystals)
+               /* if(inventory.c.crystals)
                 {
                     ingredient1.sprite = checkMark;
                 }else
@@ -124,7 +124,7 @@ public class OrderLogic : MonoBehaviour
                 }else
                 {
                     ingredient3.sprite = fireResistanceIcons[2];//lifesap
-                }
+                }*/
                 if (inventory.fireResistancePotion)
                 {
                     ingredient1.sprite = checkMark;
@@ -139,7 +139,7 @@ public class OrderLogic : MonoBehaviour
             else if (potionRecipe == 3)
             {
                 //ice resistance recipe
-                if(inventory.c.crystals)
+                /*if(inventory.c.crystals)
                 {
                     ingredient1.sprite = checkMark;
                 }else
@@ -159,7 +159,7 @@ public class OrderLogic : MonoBehaviour
                 }else
                 {
                     ingredient3.sprite = iceResistanceIcons[2];//lifesap
-                }
+                }*/
                 if (inventory.IceResistancePotion)
                 {
                     ingredient1.sprite = checkMark;
@@ -175,7 +175,7 @@ public class OrderLogic : MonoBehaviour
             else if (potionRecipe == 4)
             {
                 //magic resistance recipe
-                if(inventory.c.honey)
+               /* if(inventory.c.honey)
                 {
                     ingredient1.sprite = checkMark;
                 }else
@@ -195,7 +195,7 @@ public class OrderLogic : MonoBehaviour
                 }else
                 {
                     ingredient3.sprite = magicResistanceIcons[2];//lifesap
-                }
+                }*/
                 if (inventory.magicResistancePotion)
                 {
                     ingredient1.sprite = checkMark;
