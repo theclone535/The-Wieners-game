@@ -25,7 +25,7 @@ public class DayTimer : MonoBehaviour
     {
         timer = dayLength;
         starting = true;
-        Time.timeScale = 30;
+        //Time.timeScale = 30;
         inventory = player.GetComponent<Inventory>();
     }
 
