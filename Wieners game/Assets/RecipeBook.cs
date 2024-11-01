@@ -2,35 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour
+public class RecipeBook : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject recipeBook;
     bool paused;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("escape") && !paused)
+        if(Input.GetKeyDown("tab") && !paused)
         {
-            pauseMenu.SetActive(true);
+            recipeBook.SetActive(true);
             Time.timeScale = 0;
             paused = true;
             Cursor.lockState = CursorLockMode.None;
-        }else if (Input.GetKeyDown("escape") && paused)
+        }else if (Input.GetKeyDown("tab") && paused)
         {
-            pauseMenu.SetActive(false);
+            recipeBook.SetActive(false);
             Time.timeScale = 1;
             paused = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
-
+        
     public void Back()
     {
-        pauseMenu.SetActive(false);
+        recipeBook.SetActive(false);
         paused = false;
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
     }
-
-
-
 }

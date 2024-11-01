@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Upgrades : MonoBehaviour
 {
-    
+    //[SerializeField] private GameObject timeHandler;
+    //private DayTimer dayTimer;
 
 
     [SerializeField] private GameObject[] menus;
@@ -14,12 +15,13 @@ public class Upgrades : MonoBehaviour
 
     static private bool[] upgradesUnlocked = new bool[5]; // 0 - Additional Cauldron , 1 - Faster Brewing, 2 - Pockets, 3 - cat snacks, 4 - magic fridge
     static public int currentDay;
+    //static public float money;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //dayTimer = timeHandler.GetComponent<DayTimer>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class Upgrades : MonoBehaviour
     {
 
         Cursor.lockState = CursorLockMode.None;
+        //money = dayTimer.totalmoney;
 
 
     }

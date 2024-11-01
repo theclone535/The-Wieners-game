@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int potionRecipe;
     [SerializeField] private GameObject[] ingredientPrefab;
     [SerializeField] private GameObject holdingPos;
+    [SerializeField] private GameObject potionPrefab;
+    [SerializeField] private TextMeshProUGUI moneyText;
     public bool noOrder = false;
     public bool newCustomer;
 
@@ -40,6 +43,7 @@ public class Inventory : MonoBehaviour
     bool interacted;
     bool done = false;
     GameObject clone;
+    public GameObject potionClone;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -139,16 +143,16 @@ public class Inventory : MonoBehaviour
                     }
                 }else if (potionRecipe == 4)
                 {
-                    if (p.magmaShell || p.honey || p.lifeSap)
+                    if (p.magmaShell || p.fruitBowl || p.lifeSap)
                     {
                         if (p.magmaShell)
                         {
                             p.magmaShell = false;
                             c.magmaShell = true;
-                        }else if (p.honey)
+                        }else if (p.fruitBowl)
                         {
-                            p.honey = false;
-                            c.honey = true;
+                            p.fruitBowl = false;
+                            c.fruitBowl = true;
                         }else if (p.lifeSap)
                         {
                             p.lifeSap = false;
@@ -160,7 +164,7 @@ public class Inventory : MonoBehaviour
                     {
                         p.crystals = false;
                         p.feyBlood = false;
-                        p.fruitBowl = false;
+                        p.honey = false;
                         Debug.Log("Wrong ingredient");
                     }
                 }else
@@ -181,6 +185,9 @@ public class Inventory : MonoBehaviour
                 }
                 
             }
+
+            //updates money text
+            moneyText.text = "$" + money;
 
             if(!done && clone)
             {
@@ -326,6 +333,7 @@ public class Inventory : MonoBehaviour
             c.feyBlood = false;
             c.honey = false;
             c.crystals = false;
+            PotionInstan();
         }
 
         if (c.crystals && c.magmaShell && c.lifeSap)
@@ -334,6 +342,7 @@ public class Inventory : MonoBehaviour
             c.crystals = false;
             c.magmaShell = false;
            c.lifeSap = false;
+           PotionInstan();
         }
 
         if (c.crystals && c.fruitBowl && c.lifeSap)
@@ -342,14 +351,16 @@ public class Inventory : MonoBehaviour
             c.crystals = false;
             c.fruitBowl = false;
             c.lifeSap = false;
+            PotionInstan();
         }
 
-        if (c.magmaShell && c.lifeSap && c.honey)
+        if (c.magmaShell && c.lifeSap && c.fruitBowl)
         {
             magicResistancePotion = true;
             c.magmaShell = false;
             c.lifeSap = false;
-            c.honey = false;
+            c.fruitBowl = false;
+            PotionInstan();
         }
 
     }
@@ -362,9 +373,11 @@ public class Inventory : MonoBehaviour
                 money += 3.5f;
 
                 Destroy(orderLogic.clone);
+                Destroy(potionClone);
                 noOrder = true;
                 newCustomer = true;
                 orderLogic.potionRecipe = 0;
+                customerLogic.endSpeech = true;
 
                 moneyAudio.Play();
             }
@@ -375,9 +388,11 @@ public class Inventory : MonoBehaviour
                 money += 12.8f;
 
                 Destroy(orderLogic.clone);
+                Destroy(potionClone);
                 noOrder = true;
                 newCustomer = true;
                 orderLogic.potionRecipe = 0;
+                customerLogic.endSpeech = true;
 
             moneyAudio.Play();
             }
@@ -388,9 +403,11 @@ public class Inventory : MonoBehaviour
                 money += 12f;
 
                 Destroy(orderLogic.clone);
+                Destroy(potionClone);
                 noOrder = true;
                 newCustomer = true;
                 orderLogic.potionRecipe = 0;
+                customerLogic.endSpeech = true;
 
             moneyAudio.Play();
             }
@@ -401,13 +418,21 @@ public class Inventory : MonoBehaviour
                 money += 30f;
 
                 Destroy(orderLogic.clone);
+                Destroy(potionClone);
                 noOrder = true;
                 newCustomer = true;
                 orderLogic.potionRecipe = 0;
+                customerLogic.endSpeech = true;
 
                 moneyAudio.Play();
             }
             
+    }
+
+    void PotionInstan()
+    {
+                potionClone = Instantiate(potionPrefab, transform.position + new Vector3(-0.2f, 0f, 0), Quaternion.identity, transform);
+                potionClone.transform.rotation = transform.rotation; potionClone.transform.localPosition = new Vector3(-0.2f, 0.35f, 0);
     }
 
 }

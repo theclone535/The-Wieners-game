@@ -7,6 +7,7 @@ public class CauldronIcons : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject mainCamera;
+    [SerializeField] private GameObject cauldron;
     [SerializeField] private Inventory inventory;
     [SerializeField] private GameObject panel;
     [SerializeField] private GameObject imagePrefab;
@@ -17,7 +18,7 @@ public class CauldronIcons : MonoBehaviour
     public int numOfImg = 0;
     bool[] done = {false, false, false, false, false, false}; 
     
-
+    //public float change;
     void Start()
     {
         inventory = player.GetComponent<Inventory>();
@@ -33,7 +34,7 @@ public class CauldronIcons : MonoBehaviour
             
             if (!panelised)
             {
-                Instantiate(panel, worldCanvas); 
+                Instantiate(panel, cauldron.transform.position + new Vector3(-0.5f, 0.3f, 0), Quaternion.identity, worldCanvas); 
                 panelised = true;
             }
 
@@ -41,7 +42,7 @@ public class CauldronIcons : MonoBehaviour
         {
             GameObject clone = GameObject.Find("InCauldron(Clone)");
             clone.transform.LookAt(mainCamera.transform);
-            clone.GetComponent<RectTransform>().eulerAngles = clone.transform.rotation.eulerAngles + new Vector3(mainCamera.transform.rotation.eulerAngles.x, 180, 0);
+            clone.GetComponent<RectTransform>().eulerAngles = clone.transform.rotation.eulerAngles + new Vector3(100, 180, 0);
             
         }
 
