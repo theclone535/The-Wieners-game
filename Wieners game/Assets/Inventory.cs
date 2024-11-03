@@ -117,7 +117,7 @@ public class Inventory : MonoBehaviour
                     }
                 }else if (potionRecipe == 3)
                 {
-                    if (p.crystals || p.fruitBowl || p.lifeSap)
+                    if (p.crystals || p.fruitBowl || p.feyBlood)
                     {
                         if (p.crystals)
                         {
@@ -127,16 +127,16 @@ public class Inventory : MonoBehaviour
                         {
                             p.fruitBowl = false;
                             c.fruitBowl = true;
-                        }else if (p.lifeSap)
+                        }else if (p.feyBlood)
                         {
-                            p.lifeSap = false;
-                            c.lifeSap = true;
+                            p.feyBlood = false;
+                            c.feyBlood = true;
                         }
                         Potions();
                         cauldronAudio.Play();
                     }else
                     {
-                        p.feyBlood = false;
+                        p.lifeSap = false;
                         p.magmaShell = false;
                         p.honey = false;
                         Debug.Log("Wrong ingredient");
@@ -345,12 +345,12 @@ public class Inventory : MonoBehaviour
            PotionInstan();
         }
 
-        if (c.crystals && c.fruitBowl && c.lifeSap)
+        if (c.crystals && c.fruitBowl && c.feyBlood)
         {
             IceResistancePotion = true;
             c.crystals = false;
             c.fruitBowl = false;
-            c.lifeSap = false;
+            c.feyBlood = false;
             PotionInstan();
         }
 

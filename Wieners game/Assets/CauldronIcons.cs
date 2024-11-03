@@ -229,7 +229,7 @@ public class CauldronIcons : MonoBehaviour
         {
             Destroy(GameObject.Find("InCauldron(Clone)"));
             panelised = false;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
                 done[i] = false;
             }
