@@ -48,7 +48,7 @@ public class CauldronIcons : MonoBehaviour
 
             if (inventory.c.fruitBowl) //fruitbowl = image[0]
             {   
-                if (numOfImg < 1 && !done[0])
+                if (numOfImg < 1)
                 {
                     ingredient[0] = panel.transform.Find("Ingredient").GetComponent<Image>();
                     ingredient[0].sprite = image[0];
@@ -78,7 +78,7 @@ public class CauldronIcons : MonoBehaviour
 
             if (inventory.c.magmaShell) //magmashell = image[1]
             {   
-                if (numOfImg < 1 && !done[1])
+                if (numOfImg < 1)
                 {
                     ingredient[0] = panel.transform.Find("Ingredient").GetComponent<Image>();
                     ingredient[0].sprite = image[1];
@@ -138,7 +138,7 @@ public class CauldronIcons : MonoBehaviour
 
             if (inventory.c.feyBlood) //feyblood = image[3]
             {   
-                if (numOfImg < 1 && !done[3])
+                if (numOfImg < 1)
                 {
                     ingredient[0] = panel.transform.Find("Ingredient").GetComponent<Image>();
                     ingredient[0].sprite = image[3];
@@ -168,7 +168,7 @@ public class CauldronIcons : MonoBehaviour
 
             if (inventory.c.honey) //honey = image[4]
             {   
-                if (numOfImg < 1 && !done[4])
+                if (numOfImg < 1)
                 {
                     ingredient[0] = panel.transform.Find("Ingredient").GetComponent<Image>();
                     ingredient[0].sprite = image[4];
@@ -198,7 +198,7 @@ public class CauldronIcons : MonoBehaviour
 
             if (inventory.c.lifeSap) //lifesap = image[5]
             {   
-                if (numOfImg < 1 && !done[5])
+                if (numOfImg < 1)
                 {
                     ingredient[0] = panel.transform.Find("Ingredient").GetComponent<Image>();
                     ingredient[0].sprite = image[5];
