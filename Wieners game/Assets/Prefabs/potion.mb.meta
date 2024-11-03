@@ -13,12 +13,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Gold
-    second: {fileID: 2100000, guid: d8293988abd71df48b6853b5425ee39a, type: 2}
+    second: {fileID: 2100000, guid: 4c9530b31a001324d830056ac3b6bb71, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: red
-    second: {fileID: 2100000, guid: bd065e7a4eaee0a4ab6a73e74d35c5af, type: 2}
+    second: {fileID: 2100000, guid: 37055d481ea237146851f25ec4262118, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
